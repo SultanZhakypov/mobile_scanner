@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/src/mobile_scanner_controller.dart';
@@ -165,11 +164,9 @@ class _MobileScannerState extends State<MobileScanner>
         if (_resumeFromBackground) {
           _startScanner();
         }
-        break;
       case AppLifecycleState.inactive:
         _resumeFromBackground = true;
         _controller.stop();
-        break;
       default:
         break;
     }
@@ -199,7 +196,6 @@ class _MobileScannerState extends State<MobileScanner>
         final scale = widthRatio < heightRatio ? widthRatio : heightRatio;
         fittedTextureWidth = textureSize.width * scale;
         fittedTextureHeight = textureSize.height * scale;
-        break;
 
       case BoxFit.cover:
         final widthRatio = widgetSize.width / textureSize.width;
@@ -207,30 +203,25 @@ class _MobileScannerState extends State<MobileScanner>
         final scale = widthRatio > heightRatio ? widthRatio : heightRatio;
         fittedTextureWidth = textureSize.width * scale;
         fittedTextureHeight = textureSize.height * scale;
-        break;
 
       case BoxFit.fill:
         fittedTextureWidth = widgetSize.width;
         fittedTextureHeight = widgetSize.height;
-        break;
 
       case BoxFit.fitHeight:
         final ratio = widgetSize.height / textureSize.height;
         fittedTextureWidth = textureSize.width * ratio;
         fittedTextureHeight = widgetSize.height;
-        break;
 
       case BoxFit.fitWidth:
         final ratio = widgetSize.width / textureSize.width;
         fittedTextureWidth = widgetSize.width;
         fittedTextureHeight = textureSize.height * ratio;
-        break;
 
       case BoxFit.none:
       case BoxFit.scaleDown:
         fittedTextureWidth = textureSize.width;
         fittedTextureHeight = textureSize.height;
-        break;
     }
 
     final offsetX = (widgetSize.width - fittedTextureWidth) / 2;
@@ -257,7 +248,7 @@ class _MobileScannerState extends State<MobileScanner>
           return _buildPlaceholderOrError(context, child);
         }
 
-        if (widget.scanWindow != null && scanWindow == null) {
+        if (widget.scanWindow != null) {
           scanWindow = calculateScanWindowRelativeToTextureInPercentage(
             widget.fit,
             widget.scanWindow!,

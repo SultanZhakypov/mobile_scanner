@@ -1,0 +1,4 @@
+# melos_managed_dependency_overrides: mobile_scanner
+dependency_overrides:
+  mobile_scanner:
+    path: ..
